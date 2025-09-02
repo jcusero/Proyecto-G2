@@ -1,0 +1,88 @@
+---
+title: "Informe UCIRAG San Juan"
+author: "Rodrigo Nieva, Gimena Romano, Andrea Rodríguez, José Usero, Vanesa Ríos Morínigo, Mariana Sejas"
+format:
+  html:
+    resources:
+      - "raw.png"
+link-citations: true
+editor: visual
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+![](Archivos/Epidemiología.jpg)
+
+# INFORME UCIRAG SAN JUAN
+
+## INTRODUCCIÓN
+
+La vigilancia centinela implica la recolección de datos en forma sistemática y oportuna, a través de un número limitado de establecimientos seleccionados en base a ciertos criterios preespecificados. La Red de Vigilancia Centinela debe tener representatividad geográfica y poblacional. De esta manera, la información recopilada en dichos sitios podría ser de utilidad para caracterizar a un grupo poblacional mayor del que la muestra es representativa. La Organización Mundial de la Salud recomienda la implementación de sistemas de vigilancia centinela de hospitalizaciones por infección respiratoria aguda grave (IRAG) integrado con el componente de laboratorio para la detección de virus respiratorios con potencial epidémico y pandémico – SARS-CoV-2, influenza y VSR.
+
+En este informe, se presentarán los resultados del análisis de los datos de IRAG de la Unidad Centinela del Hospital Descentralizado Dr. Guillermo Rawson de la Provincia de San Juan, ubicado en la capital de la Provincia, el cual cuenta atención pediátrica y adultos, unidad de cuidados intensivos de ambos grupos etarios y laboratorio Recibe a más de 1.600 pacientes por día y cuenta con un total de 520 camas. Hospital Rawson con el máximo nivel de Atención Médica (Grado VIII) y el más alto en Complejidad Hospitalaria (Grado IV), por realizar enseñanza, adiestramiento e investigación en todas las disciplinas, por contar con las especialidades más complejas, tanto en consulta, internación, diagnóstico y tratamiento.
+
+## OBJETIVOS
+
+-   Caracterizar las tendencias de los casos de IRAG a través de variables epidemiológicas, clínicas y del diagnóstico etiológico.
+
+-   Identificar la frecuencia y distribución de los agentes etiológicos bajo vigilancia (VSR, Influenza, SARS CoV-2) en la internación y mortalidad por IRAs.
+
+## METODOLOGÍA
+
+### **Período de estudio**
+
+Desde el 2 de junio de 2024 al 31 de mayo de 2025 (SE23/2024 a SE23/2025).
+
+### **Análisis de datos e indicadores**
+
+(Texto, explicar)
+
+## **Vigilancia centinela de IRAG - Notificación nominal**
+
+```{r}
+#| label: Cargar Scripts
+#| echo: false
+#| message: false
+#| warning: false
+
+#CARGAR LOS SCRIPTS
+
+source("Script/Carga de datos.R")
+source("Script/Agentes por SE.R")
+source("Script/Agentes por grupo de edad.R")
+source("Script/Internación por SE.R")
+
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+##GRÁFICO POR SE IRAG E IRAG EXTENDIDA (GIME y RODRI)
+
+grafico_internacion_SE
+
+```
+
+```{r}
+#| label: Agentes por SE
+#| echo: false
+#| message: false
+#| warning: false
+#GRÁFICO AGENTES ETIOLÓGICOS POR SE (ANDRE Y JOSÉ)
+grafico_agentes_SE
+```
+
+```{r}
+#| label: GRÁFICO GRUPO ETARIO
+#| echo: false
+#| message: false
+#| warning: false
+
+
+#GRÁFICO (VANESA Y MARIANA)
+
+grafico_agentes_edad
+```
