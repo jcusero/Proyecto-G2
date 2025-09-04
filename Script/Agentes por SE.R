@@ -17,13 +17,27 @@ library(tidyr)
 # ----------------------------------------------------
 
 #data <- read.csv("data/UC_IRAG_SAN_JUAN.csv", sep = ";")
+#data$CLASIFICACION_MANUAL <- iconv(data$CLASIFICACION_MANUAL, from = "latin1", to = "UTF-8")
 
+# ----------------------------------------------------
+#eploracion de datos
+# ----------------------------------------------------
 
+#data$CLASIFICACION_MANUAL
+#cuenta_variable <- data %>% 
+ # group_by(CLASIFICACION_MANUAL) %>% 
+#  summarise(CASOS = n())
+#cuenta_variable
+
+# ----------------------------------------------------
+#seleccion de datos y filtros
+# ----------------------------------------------------
 
 # Select: seleccionar columnas
-tabla_agentes <- data %>% 
-  select(ANIO_FECHA_MINIMA, SEPI_FECHA_MINIMA, INFLUENZA_FINAL, COVID_19_FINAL, VSR_FINAL) %>% 
+tabla_agentes <- data %>%
+  select(ANIO_FECHA_MINIMA, SEPI_FECHA_MINIMA, CLASIFICACION_MANUAL,INFLUENZA_FINAL, COVID_19_FINAL, VSR_FINAL) %>% 
   filter((ANIO_FECHA_MINIMA == 2024 & SEPI_FECHA_MINIMA >= 23) | (ANIO_FECHA_MINIMA == 2025 & SEPI_FECHA_MINIMA <= 23)) %>% 
+  filter(CLASIFICACION_MANUAL != "Caso invalidado por epidemiología") %>%
   filter(str_starts(INFLUENZA_FINAL, "Influenza") | COVID_19_FINAL == "Positivo" | VSR_FINAL == "VSR")
 
 # Supongamos que ya tenés tabla_agentes filtrada como antes
@@ -64,3 +78,4 @@ grafico_agentes_SE <- ggplot(tabla_long, aes(x = Semana, y = Casos, fill = Agent
 
 rm(tabla_long)
 rm(tabla_agentes)
+

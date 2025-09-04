@@ -53,6 +53,7 @@ source("Script/Carga de datos.R")
 source("Script/Agentes por SE.R")
 source("Script/Agentes por grupo de edad.R")
 source("Script/Internación por SE.R")
+source("Script/Positividad por SE.R")
 
 ```
 
@@ -85,4 +86,16 @@ grafico_agentes_SE
 #GRÁFICO (VANESA Y MARIANA)
 
 grafico_agentes_edad
+```
+
+```{r}
+#| label: GRÁFICO positividad
+#| echo: false
+#| message: false
+#| warning: false
+
+
+#GRÁFICO positividad
+
+grafico_positividad_SE
 ```
