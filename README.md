@@ -20,7 +20,7 @@ RSTUDIO
 
 PASO A PASO
 
-1-clonar este repositorio en tu disco local (ver archivo instructivo de GIT HUB)
+1-clonar este repositorio en tu disco local (ver archivos/instructivo de GIT HUB)
 2-generar una carpeta adicional con el nombre "data" en la carpeta raiz del repositorio clonado en el disco local.
 3-Colocar una base de datos en formato csv con la informacion sobre UCIRAG como insumo del programa.
 4-Controlar los campos de la base de datos segun los requerimientos establecidos en el plan de analisis.
