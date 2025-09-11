@@ -14,7 +14,7 @@ library(tidyr)
 
 
 #data <- read.csv("data/UC_IRAG_SAN_JUAN.csv", sep = ";")
-
+#data$EDAD_UC_IRAG <- iconv(data$EDAD_UC_IRAG, from = "latin1", to = "UTF-8")
 
 
 # ----------------------------------------------------
@@ -30,7 +30,7 @@ valores_edades <- unique(data$EDAD_UC_IRAG)
 
 # Reseteo los valores de la columna para Años
 
-data$EDAD_UC_IRAG <- iconv(data$EDAD_UC_IRAG, from = "latin1", to = "UTF-8")
+
 
 
 #unique(data$EDAD_UC_IRAG)
@@ -63,9 +63,9 @@ valores_ordenados
 # ----------------------------------------------------
 
 
-unique(data$INFLUENZA_FINAL)
-unique(data$VSR_FINAL)
-unique(data$COVID_19_FINAL)
+#unique(data$INFLUENZA_FINAL)
+#unique(data$VSR_FINAL)
+#unique(data$COVID_19_FINAL)
 
 
 
@@ -117,7 +117,7 @@ datos_grafico <- conteo_positivos %>%
     tipo_virus = case_when(
       tipo_virus == "positivos_influenza" ~ "Influenza",
       tipo_virus == "positivos_vsr" ~ "VSR",
-      tipo_virus == "positivos_covid_19" ~ "COVID-19",
+      tipo_virus == "positivos_covid_19" ~ "SARS-CoV-2",
       TRUE ~ tipo_virus
     )
   )
@@ -141,7 +141,14 @@ grafico_agentes_edad <- ggplot(datos_grafico, aes(x = EDAD_UC_IRAG, y = total_ca
   theme_minimal() +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1) # Rotar las etiquetas del eje x para mejor visibilidad
-  )  
+  ) +
+  scale_fill_manual(
+    values = c(
+      "Influenza"                    = rgb(255, 0, 0, maxColorValue = 255),   # rojo
+      "SARS-CoV-2"                   = rgb(34,94,168, maxColorValue = 255),   # azul
+      "VSR"                          = rgb(35,139,69, maxColorValue = 255)  # verde
+    )
+  ) 
 
 
 #grafico_agentes_edad

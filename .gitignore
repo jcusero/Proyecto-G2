@@ -2,3 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
+#archivos de datos sensibles
+*.csv

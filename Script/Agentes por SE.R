@@ -1,13 +1,13 @@
 library(dplyr)
 library(ggplot2)
-library(lubridate)
+#library(lubridate)
 library(stringr)
-library(readxl)
-library(writexl)
+#library(readxl)
+#library(writexl)
 library(readr)
 library(dplyr)
 library(leaflet)
-library(geoAr)
+#library(geoAr)
 library(tidyr)
 
 
@@ -23,7 +23,7 @@ library(tidyr)
 #eploracion de datos
 # ----------------------------------------------------
 
-#data$CLASIFICACION_MANUAL
+unique(data$INFLUENZA_FINAL)
 #cuenta_variable <- data %>% 
  # group_by(CLASIFICACION_MANUAL) %>% 
 #  summarise(CASOS = n())
@@ -38,16 +38,17 @@ tabla_agentes <- data %>%
   select(ANIO_FECHA_MINIMA, SEPI_FECHA_MINIMA, CLASIFICACION_MANUAL,INFLUENZA_FINAL, COVID_19_FINAL, VSR_FINAL) %>% 
   filter((ANIO_FECHA_MINIMA == 2024 & SEPI_FECHA_MINIMA >= 23) | (ANIO_FECHA_MINIMA == 2025 & SEPI_FECHA_MINIMA <= 23)) %>% 
   filter(CLASIFICACION_MANUAL != "Caso invalidado por epidemiología") %>%
-  filter(str_starts(INFLUENZA_FINAL, "Influenza") | COVID_19_FINAL == "Positivo" | VSR_FINAL == "VSR")
+  filter(INFLUENZA_FINAL == "Influenza A H1N1" | INFLUENZA_FINAL == "Influenza A (sin subtipificar)" | COVID_19_FINAL == "Positivo" | VSR_FINAL == "VSR")
 
 # Supongamos que ya tenés tabla_agentes filtrada como antes
 # Primero conviene llevar los agentes a formato "largo"
 tabla_long <- tabla_agentes %>% 
-  mutate(Influenza = ifelse(str_starts(INFLUENZA_FINAL, "Influenza"), 1, 0),
-         Covid     = ifelse(COVID_19_FINAL == "Positivo", 1, 0),
+  mutate(Influenza_A_H1N1 = ifelse(INFLUENZA_FINAL== "Influenza A H1N1", 1, 0),
+         Influenza_A_sin_subtipificar = ifelse(INFLUENZA_FINAL== "Influenza A (sin subtipificar)", 1, 0),
+         'SARS-CoV-2'     = ifelse(COVID_19_FINAL == "Positivo", 1, 0),
          VSR       = ifelse(VSR_FINAL == "VSR", 1, 0)) %>% 
-  select(ANIO_FECHA_MINIMA, SEPI_FECHA_MINIMA, Influenza, Covid, VSR) %>%
-  pivot_longer(cols = c(Influenza, Covid, VSR),
+  select(ANIO_FECHA_MINIMA, SEPI_FECHA_MINIMA, Influenza_A_H1N1, Influenza_A_sin_subtipificar, 'SARS-CoV-2', VSR) %>%
+  pivot_longer(cols = c(Influenza_A_H1N1, Influenza_A_sin_subtipificar, 'SARS-CoV-2', VSR),
                names_to = "Agente",
                values_to = "Casos") %>%
   group_by(ANIO_FECHA_MINIMA, SEPI_FECHA_MINIMA, Agente) %>%
@@ -74,7 +75,17 @@ grafico_agentes_SE <- ggplot(tabla_long, aes(x = Semana, y = Casos, fill = Agent
        x = "Semana epidemiológica (Año-Semana)",
        y = "Cantidad de casos") +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  scale_fill_manual(
+    values = c(
+      "Influenza_A_H1N1"             = rgb(255, 0, 0, maxColorValue = 255),   # rojo
+      "Influenza_A_sin_subtipificar" = rgb(250,159,181, maxColorValue = 255), # rosado
+      "SARS-CoV-2"                   = rgb(34,94,168, maxColorValue = 255),   # azul
+      "VSR"                          = rgb(35,139,69, maxColorValue = 255)  # verde
+    )
+  )
+
+#grafico_agentes_SE
 
 rm(tabla_long)
 rm(tabla_agentes)
