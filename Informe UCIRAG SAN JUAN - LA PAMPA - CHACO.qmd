@@ -1,10 +1,11 @@
 ---
 title: "Informe UCIRAG San Juan"
-author: "Rodrigo Nieva, Gimena Romano, Andrea Rodríguez, José Usero, Vanesa Ríos Morínigo, Mariana Sejas"
+author: "Rodrigo Nieva, Gimena Romano, Andrea Rodríguez, José Usero, Vanesa Sejas"
 format:
   html:
+    css: styles.css       # <── aquí dentro de html
     resources:
-      - "raw.png"
+      - raw.png
 link-citations: true
 editor: visual
 execute:
@@ -52,7 +53,8 @@ Desde el 2 de junio de 2024 al 31 de mayo de 2025 (SE23/2024 a SE23/2025).
 source("Script/Carga de datos.R")
 source("Script/Agentes por SE.R")
 source("Script/Agentes por grupo de edad.R")
-source("Script/Internación por SE.R")
+#source("Script/Internación por SE.R")
+source("Script/Casos por SE.R")
 source("Script/Positividad por SE.R")
 
 ```
@@ -63,9 +65,17 @@ source("Script/Positividad por SE.R")
 #| warning: false
 ##GRÁFICO POR SE IRAG E IRAG EXTENDIDA (GIME y RODRI)
 
-grafico_internacion_SE
+grafico_casos_SE
 
 ```
+
+## AGENTES ETIOLÓGICOS
+
+Entre la SE23 y SE33 de 2024 se detectó Influenza A, en su mayoría sin subtificar y una detección de H1N1. Entre la SE34 de 2024 y SE15 de 2025 no hubo detecciones de Influenza y a partir de la SE16 de 2025 se detectó circulación viral de Influenza. La frecuencia total de Influenza en todo el periodo fue de `r total_influenza` detecciones, que representa el `r prop_influenza` % del total.
+
+Entre la SE27 y SE38 de 2024 la mayor frecuencia respecto de las detecciones correspondieron a VSR, y no se registraron detecciones en todo el periodo restante. En el periodo analizado se registraron un total de `r total_vsr` detecciones.
+
+Respecto al virus SARS-CoV-2, se registraron detecciones esporádicas en 2024 y en 2025, con un total de `r total_sars` en todo el periodo analizado.
 
 ```{r}
 #| label: Agentes por SE
@@ -75,6 +85,8 @@ grafico_internacion_SE
 #GRÁFICO AGENTES ETIOLÓGICOS POR SE (ANDRE Y JOSÉ)
 grafico_agentes_SE
 ```
+
+DESCRIPTIVO
 
 ```{r}
 #| label: GRÁFICO GRUPO ETARIO
@@ -87,6 +99,8 @@ grafico_agentes_SE
 
 grafico_agentes_edad
 ```
+
+La positividad de virus respiratorios para el periodo analizado es de `r positividad_influenza` % para Influenza, `r positividad_vsr` % para VSR y `r positividad_sars` % para SARS-CoV-2. Los valores de positividad por SE acompañan la curva epidémica, y a excepcion de algunas semanas en particular, no superan el 50%.
 
 ```{r}
 #| label: GRÁFICO positividad

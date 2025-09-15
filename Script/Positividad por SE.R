@@ -77,10 +77,8 @@ grafico_positividad_SE <- ggplot(positividad, aes(x = Semana, y = positividad,
   geom_line(size = 1) +
   geom_point(size = 2) +
   labs(
-    title = paste0("Positividad por SE. Provincia de San Juan.","\n","Periodo: SE23/",
-                   min(positividad$ANIO_FECHA_MINIMA)," hasta SE23/",
-                   max(positividad$ANIO_FECHA_MINIMA),"."),
-       x = "Semana epidemiológica (Año-Semana)",
+    title = paste0("Positividad por SE. Provincia de San Juan.Periodo: ", SE_min,
+                   "/", año_min," hasta ", SE_max, "/", año_max),
     x = "Semana epidemiológica (Año-Semana)",
     y = "Positividad (%)",
     color = "Agente"
