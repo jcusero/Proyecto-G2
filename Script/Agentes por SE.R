@@ -18,7 +18,7 @@ library(highcharter)
 #eploracion de datos
 # ----------------------------------------------------
 
-unique(data$VSR_FINAL)
+#unique(data$VSR_FINAL)
 #cuenta_variable <- data %>% 
  # group_by(CLASIFICACION_MANUAL) %>% 
 #  summarise(CASOS = n())
@@ -137,8 +137,8 @@ grafico_agentes_SE<- hchart(
   hcaes(x = Semana, y = Casos, group = Agente)
 ) %>%
   hc_title(
-    text = paste0("Agentes detectados por SE. Provincia de San Juan. Periodo: ", SE_min,
-                  "/", año_min," hasta ", SE_max, "/", año_max)) %>%
+    text = paste0("Agentes detectados por SE. Provincia de San Juan. Periodo: SE", SE_min,
+                  "/", año_min," hasta SE", SE_max, "/", año_max)) %>%
   hc_xAxis(
     title = list(text = "Semana epidemiológica (Año-Semana)"),
     labels = list(rotation = -90)

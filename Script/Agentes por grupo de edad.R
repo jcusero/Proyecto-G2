@@ -133,8 +133,8 @@ datos_grafico <- conteo_positivos %>%
 grafico_agentes_edad <- ggplot(datos_grafico, aes(x = EDAD_UC_IRAG, y = total_casos, fill = tipo_virus)) +
   geom_bar(stat = "identity", position = "dodge") +
   labs(
-    title = paste0("Casos detectados por agente y grupo de edad. Provincia de San Juan.\nPeriodo: ", SE_min,
-    "/", año_min," hasta ", SE_max, "/", año_max),
+    title = paste0("Casos detectados por agente y grupo de edad. Provincia de San Juan.\nPeriodo: SE", SE_min,
+    "/", año_min," hasta SE", SE_max, "/", año_max),
     x = "Grupo de edad",
     y = "Total de casos positivos",
     fill = "Agente"
