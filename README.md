@@ -1,8 +1,8 @@
-#PROYECTO-G2
+### PROYECTO-G2
 
 Este proyecto sirve para generar un reporte epidemiologico descriptivo de la UCIRAG.
 
-# OBJETIVOS
+## OBJETIVOS
 -Almacenar la informacion requerida para ejecutar en RSTUDIO los procedimientos para hacer el informe de manera automatizada.
 -Trabajar en grupos de manera colaborativa para agregar nuevas funcionalidades al programa.
 
