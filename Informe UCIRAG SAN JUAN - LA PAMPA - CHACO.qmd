@@ -1,13 +1,30 @@
 ---
 title: "Informe UCIRAG San Juan"
-author: "Rodrigo Nieva, Gimena Romano, Andrea Rodríguez, José Usero, Vanesa Sejas"
+author: "Rodrigo Nieva, Gimena Romano, Andrea Rodríguez, José Usero, Vanesa Ríos Morínigo, Mariana Sejas"
+lang: es
+date: "`r Sys.Date()`"
 format:
   html:
+    theme: cosmo
+    toc: true
+    toc-location: left
+    embed-resources: true # Incrusta imágenes, CSS y JS dentro del mismo HTML (autocontenido)
+    grid: # Define el ancho del margen lateral (para notas/figuras estilo Tufte)
+      margin-width: 350px
     css: styles.css       
     resources:
       - raw.png
-link-citations: true
+code-copy: true
 editor: visual
+embed-resources: true
+toc: true
+toc-depth: 3
+toc-title: "Contenido"
+toc-location: left
+theme: yeti
+reference-location: margin
+citation-location: margin
+smooth-scroll: true # suaviza el scroll
 execute:
   echo: false
   warning: false
@@ -23,6 +40,7 @@ execute:
 #CARGAR LOS SCRIPTS
 
 source("Script/Carga de datos.R")
+source("Script/Mapa_sj.R")
 source("Script/Agentes por SE.R")
 source("Script/Agentes por grupo de edad.R")
 #source("Script/Internación por SE.R")
@@ -38,6 +56,12 @@ source("Script/Positividad por SE.R")
 La vigilancia centinela implica la recolección de datos en forma sistemática y oportuna, a través de un número limitado de establecimientos seleccionados en base a ciertos criterios preespecificados. La Red de Vigilancia Centinela debe tener representatividad geográfica y poblacional. De esta manera, la información recopilada en dichos sitios podría ser de utilidad para caracterizar a un grupo poblacional mayor del que la muestra es representativa. La Organización Mundial de la Salud recomienda la implementación de sistemas de vigilancia centinela de hospitalizaciones por infección respiratoria aguda grave (IRAG) integrado con el componente de laboratorio para la detección de virus respiratorios con potencial epidémico y pandémico – SARS-CoV-2, influenza y VSR.
 
 En este informe, se presentarán los resultados del análisis de los datos de IRAG de la Unidad Centinela del Hospital Descentralizado Dr. Guillermo Rawson de la Provincia de San Juan, ubicado en la capital de la Provincia, el cual cuenta atención pediátrica y adultos, unidad de cuidados intensivos de ambos grupos etarios y laboratorio Recibe a más de 1.600 pacientes por día y cuenta con un total de 520 camas. Hospital Rawson con el máximo nivel de Atención Médica (Grado VIII) y el más alto en Complejidad Hospitalaria (Grado IV), por realizar enseñanza, adiestramiento e investigación en todas las disciplinas, por contar con las especialidades más complejas, tanto en consulta, internación, diagnóstico y tratamiento.
+
+```{r}
+
+##GRÁFICO MAPA DEL ESTABLECIMIENTO
+mapa_efectores_sj
+```
 
 ## OBJETIVOS
 
@@ -55,9 +79,9 @@ El análisis se realizó en el periodo comprendido entre la SE`r SE_min` de `r a
 
 Texto, explicar
 
-## **Vigilancia centinela de IRAG**
+## VIGILANCIA CENTINELA DE IRAG
 
-## CASOS INTERNADOS DE IRAG E IRAG EXTENDIDA
+### Casos internados de IRAG e IRAG extendida
 
 explicacion
 
@@ -71,7 +95,7 @@ grafico_casos_SE
 
 ```
 
-## AGENTES ETIOLÓGICOS
+### Agentes etiológicos
 
 Entre la SE23 y SE33 de 2024 se detectó Influenza A, en su mayoría sin subtificar y una detección de H1N1. Entre la SE34 de 2024 y SE15 de 2025 no hubo detecciones de Influenza y a partir de la SE16 de 2025 se detectó circulación viral de Influenza. La frecuencia total de Influenza en todo el periodo fue de `r total_influenza` detecciones, que representa el `r prop_influenza`% del total.
 
@@ -88,19 +112,24 @@ Respecto al virus SARS-CoV-2, se registraron detecciones esporádicas en 2024 y 
 grafico_agentes_SE
 ```
 
-DESCRIPTIVO
+### Grupos de edad afectados
+
+El siguiente gráfico de barras muestra la distribución de casos detectados de Influenza, SARS-CoV-2 y VSR en la provincia de San Juan, agrupados por grupos de edad. El VSR es el virus más prevalente en la población infantil. Este virus es el agente predominante en todos los grupos etarios menores de 2 años, con un pico de 25 casos en los bebés de 0 a 2 meses. Esta alta incidencia en los más jóvenes subraya el impacto significativo del VSR en la salud pediátrica. El virus de influenza muestra mayor afectación en edad escolar y adolescente. Su mayor incidencia en los grupos de 10 a 14 años (15 casos) y de 15 a 19 años (12 casos). Durante el período analizado, el SARS-CoV-2 presenta una baja circulación en comparación con los otros dos virus. Los casos son esporádicos y se distribuyen en varios grupos de edad sin un pico significativo.
 
 ```{r}
 #| label: GRÁFICO GRUPO ETARIO
 #| echo: false
 #| message: false
 #| warning: false
-
+#| fig-width: 12
+#| fig-height: 6
 
 #GRÁFICO (VANESA Y MARIANA)
 
 grafico_agentes_edad
 ```
+
+### Positividad de muestras analizadas
 
 La positividad de virus respiratorios para el periodo analizado es de `r positividad_influenza`% para Influenza, `r positividad_vsr`% para VSR y `r positividad_sars`% para SARS-CoV-2. Los valores de positividad por SE acompañan la curva epidémica, y a excepcion de algunas semanas en particular, no superan el 50%.
 
@@ -109,7 +138,8 @@ La positividad de virus respiratorios para el periodo analizado es de `r positiv
 #| echo: false
 #| message: false
 #| warning: false
-
+#| fig-width: 12
+#| fig-height: 6
 
 #GRÁFICO positividad
 

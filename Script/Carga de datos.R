@@ -4,7 +4,11 @@ library(readr)
 # ----------------------------------------------------
 # Importación de datos
 # ----------------------------------------------------
+# cargar base de datos
 data <- read.csv("data/UC_IRAG_SAN_JUAN.csv", sep = ";")
+# Cargar los datos de los efectores
+LISTADO_EFECTORES <- readxl::read_excel("data/EFECTORES.xlsx")
+
 # ----------------------------------------------------
 # correccion de datos
 # ----------------------------------------------------

@@ -1,5 +1,4 @@
 library(dplyr)
-library(ggplot2)
 library(stringr)
 library(readr)
 library(leaflet)
@@ -70,15 +69,15 @@ grafico_casos_SE <- hchart(
   hcaes(x = Semana, y = Casos, group = Clasificacion)
 ) %>%
   hc_title(
-    text = paste0("Agentes detectados por SE. Provincia de San Juan. Periodo: ", SE_min,
-                  "/", año_min," hasta ", SE_max, "/", año_max)
+    text = paste0("Casos de IRAG e IRAG extendida por SE. Provincia de San Juan. Periodo: SE", SE_min,
+                  "/", año_min," hasta SE", SE_max, "/", año_max)
   ) %>%
   hc_xAxis(
     title = list(text = "Semana epidemiológica (Año-Semana)"),
     labels = list(rotation = -90)
   ) %>%
   hc_yAxis(
-    title = list(text = "Cantidad de casos")
+    title = list(text = "Frecuencia de casos")
   ) %>%
   hc_plotOptions(
     column = list(stacking = "normal")   # apilado

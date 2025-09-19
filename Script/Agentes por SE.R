@@ -144,7 +144,7 @@ grafico_agentes_SE<- hchart(
     labels = list(rotation = -90)
   ) %>%
   hc_yAxis(
-    title = list(text = "Cantidad de casos")
+    title = list(text = "Frecuencia de casos")
   ) %>%
   hc_plotOptions(
     column = list(stacking = "normal")   # apilado

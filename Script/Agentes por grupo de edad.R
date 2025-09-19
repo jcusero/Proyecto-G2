@@ -30,12 +30,7 @@ valores_edades <- unique(data$EDAD_UC_IRAG)
 
 # Reseteo los valores de la columna para Años
 
-
-
-
 #unique(data$EDAD_UC_IRAG)
-
-
 
 # ----------------------------------------------------
 # Ordenar la variable y crear un vector para grupo de edad

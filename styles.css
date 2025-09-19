@@ -50,3 +50,7 @@ button:hover, .btn:hover {
   background-color: #2C3E4C;
   color: #F4DFB9;
 }
+
+.quarto-figure {
+  max-width: 100% !important;
+}
