@@ -1,4 +1,4 @@
-### PROYECTO-G2
+# PROYECTO-G2
 
 Este proyecto sirve para generar un reporte epidemiologico descriptivo de la UCIRAG.
 
@@ -6,10 +6,10 @@ Este proyecto sirve para generar un reporte epidemiologico descriptivo de la UCI
 -Almacenar la informacion requerida para ejecutar en RSTUDIO los procedimientos para hacer el informe de manera automatizada.
 -Trabajar en grupos de manera colaborativa para agregar nuevas funcionalidades al programa.
 
-# DESCRIPCION
+## DESCRIPCION
 El analisis de la informacion generada por la unidad centinela UCIRAG tiene como objetivo principal obtener informacion para la toma de desiciones.
 
-# ESTRUCTURA DEL REPOSITORIO
+## ESTRUCTURA DEL REPOSITORIO
 
 .gitignore  - archivo que contiene las especificaciones de los documentos que no deben subirse al repositorio
 
@@ -31,7 +31,7 @@ Output/ - carpeta de archivos de salida como html, imagenes, etc
 
 Script/ - carpeta que contiene los procedimientos en lenguaje R que utiliza el programa para el analisis y la generacion de datos, tablas, graficos, etc.
 
-# REQUISITOS
+## REQUISITOS
 
 -Hardware: Procesador de 2 nucleos, I4 o supeprior. Sistema de 64-bits preferiblemente, con un minimo 4-8 GB de RAM para datasets pequeños.
 -Software: 
@@ -40,15 +40,15 @@ Script/ - carpeta que contiene los procedimientos en lenguaje R que utiliza el p
 -RSTUDIO
 -Explorador web
 
-# PASO A PASO
+## PASO A PASO
 
-Clonar el repositorio (primera vez)
+### Clonar el repositorio (primera vez)
 
 1-clonar este repositorio en tu disco local (ver archivos/instructivo de GIT HUB)
 
 2-generar una carpeta adicional con el nombre "data" en la carpeta raiz del repositorio clonado en el disco local.
 
-Generar un informe
+### Generar un informe
 
 1-Colocar una base de datos en formato csv con la informacion sobre UCIRAG como insumo del programa.
 
@@ -67,7 +67,7 @@ Generar un informe
 8-El informe se genera en formato html dentro de la carpeta raiz del proyecto.
 
 
-Modificar un procedimiento
+### Modificar un procedimiento
 
 Seguir los pasos indicados por el instructivo para subir un cambio al repositorio (ver archivos/instructivo de GIT HUB)
 Abrir Pull Request en GitHub
